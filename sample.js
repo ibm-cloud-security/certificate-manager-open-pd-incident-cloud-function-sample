@@ -19,9 +19,11 @@ function getDate(timestamp) {
 }
 
 function createIssueBody(notificationData) {
-    if (notificationData.event_type === "cert_about_to_expire_reimport_required")
+    if (notificationData.event_type === "cert_about_to_expire_reimport_required" ||
+        notificationData.event_type === "cert_about_to_expire_renew_required")
         return `${notificationData.certificates.length} certificate/s will expire on ${getDate(notificationData.expiry_date)}. CertificateManager link: ${notificationData.certificate_manager_url}`;
-    if (notificationData.event_type === "cert_expired_reimport_required")
+    if (notificationData.event_type === "cert_expired_reimport_required" ||
+        notificationData.event_type === "cert_expired_renew_required")
         return `${notificationData.certificates.length} certificate/s have already expired. CertificateManager link: ${notificationData.certificate_manager_url}`;
 }
 
