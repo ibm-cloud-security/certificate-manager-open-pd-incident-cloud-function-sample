@@ -25,6 +25,9 @@ function createIssueBody(notificationData) {
     if (notificationData.event_type === "cert_expired_reimport_required" ||
         notificationData.event_type === "cert_expired_renew_required")
         return `${notificationData.certificates.length} certificate/s have already expired. CertificateManager link: ${notificationData.certificate_manager_url}`;
+ // if you want to test this channel, uncomment this code
+ // if (notificationData.event_type === "test_notification_channel")
+ //     return "Test notifications channel";   
 }
 
 async function main(params) {
